@@ -1,95 +1,168 @@
 <!DOCTYPE html>
-<html lang="tl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Del Gaming - Follow Us</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Del Gaming - Official</title>
+    <meta name="description" content="Del Gaming | Twitch | YouTube | TikTok | Instagram">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, #0c0c1d, #1a0033, #2d1b69, #0f3460);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: #fff;
-            min-height: 100vh;
+            font-family: 'Arial Black', Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: #0a0a0a;
+            position: relative;
+            cursor: none;
+        }
+
+        /* LIVE ANIME WALLPAPER */
+        .anime-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, #ff6b6b33 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #4ecdc433 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #45b7d133 0%, transparent 50%);
+            z-index: 1;
+            animation: pulseBg 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseBg {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        /* FLOATING ANIME CHARACTER */
+        .anime-char {
+            position: fixed;
+            bottom: -20%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRkY2QjM1IiByeD0iNTAiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTUwIiByPSI4MCIgZmlsbD0iI0ZGQjFGQSIvPgo8Y2lyY2xlIGN4PSIxNjUiIGN5PSIxMzAiIHI9IjE1IiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjIzNSIgY3k9IjEzMCIgcj0iMTUiIGZpbGw9IiNGRkZGRkYiLz4KPHBhdGggZD0iTTIwMCAyNDAgTDIwMCAyNzAgUTIwNSAyODAgMjE1IDI3NSBRMjI1IDI3MCAyMjUgMjYwIFoiIGZpbGw9IiMwMEFGQkMiLz4KPHBhdGggZD0iTTkwIDI5MCBRMTUwIDM0MCAyMDAgMzIwIFExODAgMzAwIDE1MCAyOTAgWiIgZmlsbD0iI0ZGQjFGQSIvPgo8L3N2Zz4K') center/contain no-repeat;
+            animation: floatAnime 6s ease-in-out infinite, sway 3s ease-in-out infinite;
+            z-index: 2;
+            filter: drop-shadow(0 0 30px #FF6B35);
+            opacity: 0.9;
+        }
+
+        @keyframes floatAnime {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-30px) rotate(2deg); }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0) rotateY(0deg); }
+            50% { transform: translateX(10px) rotateY(5deg); }
+        }
+
+        /* PARTICLE SYSTEM */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FF6B35;
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            position: relative;
+            z-index: 10;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
+            height: 100vh;
             text-align: center;
-            max-width: 600px;
-            padding: 2rem;
-            z-index: 2;
-            position: relative;
+            padding: 20px;
         }
 
         .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 6rem;
+            font-size: 5rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #ff0080, #00f2fe, #ff6b6b, #4ecdc4);
-            background-size: 300% 300%;
+            background: linear-gradient(45deg, #FF6B35, #F7931E, #45B7D1);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textGlow 3s ease-in-out infinite alternate;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 60px rgba(255, 0, 128, 0.6);
+            text-shadow: 0 0 30px #FF6B35;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+            margin-bottom: 10px;
         }
 
-        @keyframes textGlow {
-            from { filter: drop-shadow(0 0 20px #ff0080); }
-            to { filter: drop-shadow(0 0 40px #00f2fe); }
+        @keyframes neonGlow {
+            from { filter: drop-shadow(0 0 10px #FF6B35); }
+            to { filter: drop-shadow(0 0 30px #FF6B35); }
         }
 
-        .tagline {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            font-weight: 300;
-            letter-spacing: 2px;
+        h1 {
+            font-size: 3rem;
+            color: #FFD23F;
+            text-shadow: 0 0 20px #FFD23F;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
         }
 
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            max-width: 400px;
-            margin: 0 auto;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
-        .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            padding: 1.5rem 2rem;
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .social-card {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,107,53,0.5);
             border-radius: 20px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 600;
+            padding: 25px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
 
-        .social-btn::before {
+        .social-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -97,173 +170,146 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
+            transition: 0.6s;
         }
 
-        .social-btn:hover::before {
+        .social-card:hover::before {
             left: 100%;
         }
 
-        .social-btn:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(255,255,255,0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            background: rgba(255,255,255,0.2);
+        .social-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: #FFD23F;
+            box-shadow: 0 25px 50px rgba(255,107,53,0.4);
         }
 
-        .social-icon {
-            font-size: 2.5rem;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        .platform-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 0 10px currentColor);
         }
 
-        .facebook .social-icon { background: #1877F2; }
-        .tiktok .social-icon { background: linear-gradient(45deg, #ff0050, #ff0040); }
-        .instagram .social-icon { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-
-        .social-text {
-            text-align: left;
+        .platform-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD23F;
         }
 
-        .username {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-        }
-
-        .followers {
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-
-        .copy-all {
-            margin-top: 3rem;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border: none;
+        .platform-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
             border-radius: 50px;
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255,107,53,0.4);
         }
 
-        .copy-all:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255,107,107,0.6);
-        }
-
-        .floaters {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floater {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 20s infinite linear;
-        }
-
-        .floater:nth-child(1) { width: 100px; height: 100px; background: #ff0080; left: 10%; animation-delay: 0s; }
-        .floater:nth-child(2) { width: 60px; height: 60px; background: #00f2fe; left: 80%; animation-delay: 5s; }
-        .floater:nth-child(3) { width: 80px; height: 80px; background: #ff6b6b; left: 50%; animation-delay: 10s; }
-        .floater:nth-child(4) { width: 40px; height: 40px; background: #4ecdc4; left: 20%; animation-delay: 15s; }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.1; }
-            90% { opacity: 0.1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        .platform-link:hover {
+            background: linear-gradient(45deg, #FFD23F, #FF6B35);
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(255,210,63,0.6);
         }
 
         @media (max-width: 768px) {
-            .logo { font-size: 4rem; }
-            .social-links { gap: 1rem; }
-            .social-btn { padding: 1.2rem 1.5rem; flex-direction: column; gap: 1rem; }
-            .social-icon { font-size: 2rem; width: 50px; height: 50px; }
+            .anime-char { width: 250px; height: 250px; }
+            .logo { font-size: 3rem; }
+            h1 { font-size: 2rem; }
+            .social-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="floaters">
-        <div class="floater"></div>
-        <div class="floater"></div>
-        <div class="floater"></div>
-        <div class="floater"></div>
-    </div>
-
+    <div class="anime-bg"></div>
+    <div class="anime-char"></div>
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
-        <div class="logo">DEL GAMING</div>
-        <p class="tagline">FOLLOW KAMI SA SOCIAL MEDIA</p>
-
-        <div class="social-links">
-            <a href="https://www.facebook.com/radel.najera.75" class="social-btn facebook" target="_blank">
-                <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
-                <div class="social-text">
-                    <div class="username">radel.najera.75</div>
-                    <div class="followers">🔥 Facebook</div>
-                </div>
-            </a>
-
-            <a href="https://www.tiktok.com/@najeraradel37?_r=1&_t=ZS-94mQCtVDyEL" class="social-btn tiktok" target="_blank">
-                <div class="social-icon"><i class="fab fa-tiktok"></i></div>
-                <div class="social-text">
-                    <div class="username">@najeraradel37</div>
-                    <div class="followers">🎵 TikTok</div>
-                </div>
-            </a>
-
-            <a href="#" class="social-btn instagram" target="_blank">
-                <div class="social-icon"><i class="fab fa-instagram"></i></div>
-                <div class="social-text">
-                    <div class="username">@del.gaming.ph</div>
-                    <div class="followers">📸 Instagram</div>
-                </div>
-            </a>
+        <div class="logo">DEL</div>
+        <h1>DEL GAMING</h1>
+        <p style="color: #aaa; font-size: 1.2rem; margin-bottom: 40px;">OFFICIAL | LIVE STREAMING 24/7</p>
+        
+        <div class="social-grid">
+            <div class="social-card">
+                <span class="platform-icon" style="color: #9146FF;">🎮</span>
+                <div class="platform-name">Twitch</div>
+                <a href="https://twitch.tv/YOURUSERNAME" target="_blank" class="platform-link" rel="noopener">Live Now!</a>
+            </div>
+            
+            <div class="social-card">
+                <span class="platform-icon" style="color: #FF0000;">📺</span>
+                <div class="platform-name">YouTube</div>
+                <a href="https://youtube.com/@YOURCHANNEL" target="_blank" class="platform-link" rel="noopener">Watch VODs</a>
+            </div>
+            
+            <div class="social-card">
+                <span class="platform-icon" style="color: #FF0050;">📱</span>
+                <div class="platform-name">TikTok</div>
+                <a href="https://tiktok.com/@YOURUSERNAME" target="_blank" class="platform-link" rel="noopener">Clips Daily</a>
+            </div>
+            
+            <div class="social-card">
+                <span class="platform-icon" style="color: #E4405F;">📸</span>
+                <div class="platform-name">Instagram</div>
+                <a href="https://instagram.com/YOURUSERNAME" target="_blank" class="platform-link" rel="noopener">Follow Me</a>
+            </div>
         </div>
-
-        <button class="copy-all" onclick="copyLinks()">
-            📋 KOPYAHIN LAHAT NG LINKS
-        </button>
-
-        <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
-            Follow para sa updates, giveaways at gaming content! 🔥
-        </p>
     </div>
 
     <script>
-        function copyLinks() {
-            const links = [
-                'Facebook: https://www.facebook.com/radel.najera.75',
-                'TikTok: https://www.tiktok.com/@najeraradel37',
-                'Instagram: https://instagram.com/del.gaming.ph'
-            ].join('\n');
-
-            navigator.clipboard.writeText(links).then(() => {
-                const btn = document.querySelector('.copy-all');
-                const original = btn.textContent;
-                btn.textContent = '✅ NA-KOPYA NA LAHAT!';
-                btn.style.background = 'linear-gradient(45deg, #00ff88, #00cc6a)';
-
-                setTimeout(() => {
-                    btn.textContent = original;
-                    btn.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
-                }, 2500);
-            });
+        // ADVANCED PARTICLE SYSTEM
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#FF6B35', '#F7931E', '#45B7D1', '#FFD23F', '#FF6B6B'];
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = (5 + Math.random() * 5) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 10000);
+            }, 300);
         }
+
+        // MOUSE TRAIL EFFECT
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.style.cssText = `
+                position: fixed;
+                width: 8px;
+                height: 8px;
+                background: #FFD23F;
+                border-radius: 50%;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                pointer-events: none;
+                z-index: 100;
+                animation: trailFade 0.6s ease-out forwards;
+            `;
+            document.body.appendChild(trail);
+            
+            setTimeout(() => trail.remove(), 600);
+        });
+
+        // Add trail animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes trailFade {
+                to { opacity: 0; transform: scale(2) translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        createParticles();
     </script>
 </body>
 </html>
